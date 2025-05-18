@@ -13,9 +13,10 @@
         
       <header class="header">
         <div class="left">
-          <img src="/static/logo.PNG"   alt="Logo" class="logo">
+          <img src="/static/logo.PNG"  href="{{ url_for('dashboard') }}" alt="Logo" class="logo">
         </div>
         <div class="right">
+            <a href="{{ url_for('dashboard') }}"><button class="profile-btn">Home</button></a>
           <a href="{{ url_for('profile') }}"><button class="profile-btn">👤 Profile</button></a>
           <a href="/cart" class="cart-icon">🛒</a>
           <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
