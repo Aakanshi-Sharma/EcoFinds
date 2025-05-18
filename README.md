@@ -52,16 +52,14 @@ Screens include:
 
 ---
 
-## 🚀 Getting Started
+
 
 ### Prerequisites
 
-- Node.js / Python / Flutter *(specify based on your stack)*
+- Node.js / Python / 
 - Git
 
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/ecofinds.git
-cd ecofinds
-# Follow with frontend/backend setup steps
+
