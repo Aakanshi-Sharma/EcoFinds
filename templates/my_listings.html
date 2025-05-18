@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Listings - EcoFinds</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='my_listings.css') }}">
+</head>
+<body>
+  <header class="header">
+    <a href="/profile" class="back-link">← Back to Profile</a>
+    <h2>My Listings</h2>
+  </header>
+
+  <main class="container">
+    {% if listings %}
+      <div class="product-grid">
+        {% for item in listings %}
+          <div class="product-card">
+            <img src="{{ item.image or '/static/placeholder.jpg' }}" alt="Product Image">
+            <p class="title">{{ item.title }}</p>
+            <p class="price">${{ "%.2f"|format(item.price) }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="no-listings">You have not listed any products yet.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

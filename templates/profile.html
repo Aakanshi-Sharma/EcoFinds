@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile - EcoFinds</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+  <header class="header">
+    <img src="/static/logo.png" class="logo" alt="EcoFinds">
+     
+    <div>
+      <a href="{{ url_for('profile') }}"><button class="profile-btn">Profile</button></a>
+      <a href="/cart" class="cart-icon">🛒</a>
+      <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
+    </div>
+  </header>
+
+  <main class="profile-container">
+    <div class="user-info">
+      <img src="/static/avatar.png" class="avatar" alt="Profile Picture">
+      <button class="edit-btn">Edit</button>
+      <p class="info">{{ user.username }}</p>
+      <p class="info">{{ user.email }}</p>
+    </div>
+
+    <div class="navigation-box">
+      <a href="/my-listings"><button class="nav-btn">My Listings</button></a>
+      <a href="/my-purchases"><button class="nav-btn">My Purchases</button></a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ product.title }} - EcoFinds</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}">
+</head>
+<body>
+  <header class="header">
+    <img src="/static/logo.png" class="logo" alt="EcoFinds">
+    <a href="/cart" class="cart-icon">🛒</a>
+  </header>
+
+  <main class="product-container">
+    <h2 class="product-title">{{ product.title }}</h2>
+    <img src="{{ product.image or '/static/placeholder.jpg' }}" alt="Product Image" class="product-image">
+    
+    <div class="product-description">
+      <p><strong>Category:</strong> {{ product.category }}</p>
+      <p><strong>Price:</strong> ${{ "%.2f"|format(product.price) }}</p>
+      <p>{{ product.description }}</p>
+    </div>
+
+    <form action="/cart/add" method="POST">
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+    </form>
+  </main>
+</body>
+</html>
