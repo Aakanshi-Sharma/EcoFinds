@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login - EcoFinds</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="UTF-8">
+  <title>Login - EcoFinds</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            <div>{{ form.email.label }} {{ form.email() }}</div>
-            <div>{{ form.password.label }} {{ form.password() }}</div>
-            <div>{{ form.submit() }}</div>
-            {% if error %}
-                <p style="color:red;">{{ error }}</p>
-            {% endif %}
-        </form>
-        <p>Don’t have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+  <div class="background">
+    <div class="login-card">
+      <h2>Log In</h2>
+      <p class="subtitle">Enter your details below</p>
+      <form method="POST">
+        {{ form.hidden_tag() }}
 
+        <div class="form-group">
+          {{ form.email(placeholder="Email or Phone Number", class="input-field") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.password(placeholder="Password", class="input-field") }}
+        </div>
+
+        <div class="form-btn">
+          <button type="submit" class="login-btn">🔐 Log in</button>
+        </div>
+
+        <div class="google-btn">
+          <img src="https://img.icons8.com/color/20/000000/google-logo.png" />
+          Log in with Google
+        </div>
+
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+      </form>
+
+      <p class="footer-text">Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
     </div>
+  </div>
 </body>
 </html>

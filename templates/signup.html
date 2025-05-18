@@ -2,47 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Create an Account - EcoFinds</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='signup-modern.css') }}">
+  <title>Create Account - EcoFinds</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="form-box">
+  <div class="background">
+    <div class="signup-card">
       <h2>Create an account</h2>
-      <p>Enter your details below</p>
+      <p class="subtitle">Enter your details below</p>
 
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
 
         <div class="form-group">
+          <span class="icon">👤</span>
           {{ form.username(placeholder="Name", class="input-field") }}
         </div>
 
         <div class="form-group">
+          <span class="icon">📧</span>
           {{ form.email(placeholder="Email or Phone Number", class="input-field") }}
         </div>
 
         <div class="form-group">
+          <span class="icon">🔒</span>
           {{ form.password(placeholder="Password", class="input-field") }}
         </div>
 
         <div class="form-group">
-          {{ form.confirm_password(placeholder="Confirm Password", class="input-field") }}
+          {{ form.submit(class="signup-btn") }}
         </div>
 
-        <button type="submit" class="primary-btn">Create Account</button>
+        <div class="google-btn">
+          <img src="https://img.icons8.com/color/20/000000/google-logo.png" />
+          Sign up with Google
+        </div>
+
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
       </form>
 
-      <button class="google-btn">
-        <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Icon">
-        Sign up with Google
-      </button>
-
-      <p class="login-text">Already have account? <a href="{{ url_for('login') }}">Log in</a></p>
-
-      {% if error %}
-        <p class="error">{{ error }}</p>
-      {% endif %}
+      <p class="footer-text">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
     </div>
   </div>
 </body>
