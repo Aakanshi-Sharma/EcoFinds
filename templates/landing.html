@@ -2,61 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EcoFinds | Home</title>
+  <title>EcoFinds | Dashboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="left">
-      <img src="/static/logo.png" alt="Logo" class="logo">
-    </div>
-    <div class="right">
-        <a href="{{ url_for('profile') }}"><button class="profile-btn">Profile</button></a>
-      <a href="/cart" class="cart-icon">🛒</a>
-      <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
-    </div>
-  </header>
+  <div class="background">
+    <div class="dashboard-container">
+      <header class="header">
+        <div class="left">
+          <img src="/static/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="right">
+          <a href="{{ url_for('profile') }}"><button class="profile-btn">👤 Profile</button></a>
+          <a href="/cart" class="cart-icon">🛒</a>
+          <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
+        </div>
+      </header>
 
-  <main class="container">
-    <div class="search-section">
-      <input type="text" id="searchInput" placeholder="Search ..." oninput="filterProducts()">
-      <div class="controls">
-        <button>Sort</button>
-        <button>Filter</button>
-        <button>Groupby</button>
-      </div>
-    </div>
+      <main class="container">
+        <div class="search-section">
+          <input type="text" id="searchInput" placeholder="Search ..." oninput="filterProducts()">
+          <div class="controls">
+            <button>Sort</button>
+            <button>Filter</button>
+            <button>Groupby</button>
+          </div>
+        </div>
 
-    <div class="banner">
-      <img src="/static/banner.jpg" alt="Banner" />
-    </div>
+        <div class="banner">
+          <img src="/uploads/login_img.jpeg" alt="Banner" />
+        </div>
+    <h3 class="section-title">Category</h3>
+        <div class="categories">
+            
+          <button>All Categories</button>
+          {% for category in categories %}
+            <button class="category-btn">{{ category.name }}</button>
+          {% endfor %}
+        </div>
 
-    <div class="categories">
-      <button>All Categories</button>
-    </div>
-    <div class="product-grid" id="productGrid">
-      {% for product in categories %}
-      <div class="product-card">
-        <p class="title">{{ product.name }}</p>
-      </div>
-      {% endfor %}
-    </div>
+        <h3 class="section-title">Products</h3>
+        <div class="product-grid" id="productGrid">
+          {% for product in products %}
+          <a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-card-link">
+            <div class="product-card">
+              <img src="{{ product.image or '/static/placeholder.jpg' }}" alt="Product">
+              <p class="title">{{ product.title }}</p>
+              <p class="price">${{ "%.2f"|format(product.price) }}</p>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
 
-    <div class="product-grid" id="productGrid">
-      {% for product in products %}
-      <a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-card-link">
-  <div class="product-card">
-    <img src="{{ product.image or '/static/placeholder.jpg' }}" alt="Product">
-    <p class="title">{{ product.title }}</p>
-    <p class="price">${{ "%.2f"|format(product.price) }}</p>
+        <p id="productCount">{{ products|length }} items found</p>
+      </main>
+    </div>
   </div>
-</a>
-
-      {% endfor %}
-    </div>
-
-    <p id="productCount">{{ products|length }} items found</p>
-  </main>
 
   <script>
     function filterProducts() {
