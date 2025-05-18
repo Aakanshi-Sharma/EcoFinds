@@ -8,10 +8,12 @@
 </head>
 <body>
   <div class="background">
+    
     <div class="dashboard-container">
+        
       <header class="header">
         <div class="left">
-          <img src="/static/logo.png" alt="Logo" class="logo">
+          <img src="/static/logo.PNG"   alt="Logo" class="logo">
         </div>
         <div class="right">
           <a href="{{ url_for('profile') }}"><button class="profile-btn">👤 Profile</button></a>
@@ -31,9 +33,13 @@
         </div>
 
         <div class="banner">
-          <img src="/static/banner.jpg" alt="Banner" />
+          <img src="/static/landing_bg.jpg" alt="Banner" />
         </div>
+       
 
+
+ 
+ <h3 class="section-title">Category</h3>
         <div class="categories">
           <button>All Categories</button>
           {% for category in categories %}
