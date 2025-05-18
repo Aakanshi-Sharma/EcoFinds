@@ -3,6 +3,10 @@
 EcoFinds is a desktop and mobile web application that empowers users to buy and sell second-hand items, promoting sustainable consumption and a circular economy. This platform provides an intuitive and community-driven space for discovering unique pre-owned products and making environmentally conscious choices.
 
 ---
+## Demo Video link 
+https://drive.google.com/file/d/13SOJtyCaIlWvUyvKuVxA68vJaudMedPK/view?usp=sharing
+
+---
 
 ## 🌍 Vision
 
