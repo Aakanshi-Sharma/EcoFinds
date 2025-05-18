@@ -1,45 +1,55 @@
 import sqlite3
 import os
-from typing import Optional
 
-def connect_to_db(db_name: str) -> Optional[sqlite3.Connection]:
-    """Establish a connection to the SQLite database."""
-    try:
-        connection = sqlite3.connect(db_name)
-        return connection
-    except sqlite3.Error as e:
-        print(f"Error connecting to database: {e}")
-        return None
+DB_PATH = 'database/ecofinds.db'
 
-def create_tables(connection: sqlite3.Connection) -> None:
-    """Create tables in the database if they do not exist."""
-    cursor = connection.cursor()
-    try:
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT NOT NULL,
-                email TEXT NOT NULL UNIQUE
-            )
-        ''')
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS products (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                price REAL NOT NULL
-            )
-        ''')
-        connection.commit()
-    except sqlite3.Error as e:
-        print(f"Error creating tables: {e}")
+def create_tables():
+    os.makedirs("database", exist_ok=True)
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
 
-def init_db(db_name: str) -> None:
-    """Initialize the database by creating tables."""
-    connection = connect_to_db(db_name)
-    if connection:
-        create_tables(connection)
-        connection.close()
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL,
+        username TEXT
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS categories (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL UNIQUE
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        description TEXT,
+        category_id INTEGER,
+        price REAL,
+        image TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (category_id) REFERENCES categories(id)
+    )
+    """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS product_ownership (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            product_id INTEGER NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id),
+            FOREIGN KEY(product_id) REFERENCES products(id),
+            UNIQUE(user_id, product_id)
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+    print("All tables created successfully.")
 
 if __name__ == "__main__":
-    db_name = os.getenv("DB_NAME", "eco_finds.db")  # Use environment variable or default
-    init_db(db_name)
+    create_tables()
