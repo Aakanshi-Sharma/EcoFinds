@@ -27,6 +27,15 @@ def get_users_by_id(user_id):
     conn.close()
     return row
 
+def get_all_users():
+    conn = sqlite3.connect('database/ecofinds.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM users")
+    rows = cursor.fetchall()
+    conn.close()
+    return [{"id": row[0], "name": row[1] , "sads":row[2]} for row in rows]
+
 def get_user_by_email(email):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -44,6 +53,7 @@ def get_user_by_email(email):
 
 def create_user(email, username, raw_password):
     hashed_password = bcrypt.hashpw(raw_password.encode('utf-8'), bcrypt.gensalt())
+    # hashed_password=raw_password
     try:
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
@@ -55,6 +65,18 @@ def create_user(email, username, raw_password):
     except sqlite3.IntegrityError:
         return False
     
+def delete_users(user_id):
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM users WHERE id =?",
+                       (user_id,))
+        conn.commit()
+        conn.close()
+        return True
+    except sqlite3.IntegrityError:
+        return False
+
 def get_product_by_id(product_id:str):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -161,17 +183,6 @@ def get_categorized_products():
 
 if __name__=="__main__":
     # add_category("Foods")
+    print(get_all_users())
     
-    
-    categories = get_all_categories()
-    print("categories", categories)
-    electronics = next((c for c in categories if c['name'] == "Electronics"), None)
-    print("electronics", electronics)
-    if electronics:
-        add_product({
-            "title": "Used iPhone 12",
-            "description": "Slightly used, excellent condition.",
-            "category_id": electronics['id'],
-            "price": 349.99,
-            "image": "/static/sample-iphone.jpg"
-        })
+

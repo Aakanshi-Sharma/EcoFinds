@@ -30,14 +30,11 @@ def signup():
     form = RegisterForm()
     error = None
     if form.validate_on_submit():
-        # Check if user already exists
         existing_user = get_user_by_email(form.email.data)
-        print("")
+        print("form")
         if existing_user:
             error = "User already exists with this email"
         else:
-            # Attempt to create the user
-            print("yessssssssssssssssssssssssss")
             success = create_user(
                 email=form.email.data,
                 username=form.username.data,
@@ -47,6 +44,10 @@ def signup():
                 return redirect(url_for('login'))
             else:
                 error = "Failed to register user (email must be unique)"
+    else:
+        if form.errors:
+            print("Form errors:", form.errors)
+
     return render_template('signup.html', form=form, error=error)
 
 

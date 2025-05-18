@@ -29,7 +29,10 @@
           <span class="icon">🔒</span>
           {{ form.password(placeholder="Password", class="input-field") }}
         </div>
-
+<div class="form-group">
+  <span class="icon">🔒</span>
+  {{ form.confirm_password(placeholder="Confirm Password", class="input-field") }}
+</div>
         <div class="form-btn">
           {{ form.submit(class="signup-btn") }}
         </div>
