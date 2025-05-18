@@ -6,8 +6,9 @@ body, html {
 }
 
 .background {
-  background: url('/static/background.jpg') no-repeat center center;
-  background-size: cover;
+  background: 
+    linear-gradient(135deg, rgba(208, 241, 165, 0.8), rgba(124, 200, 103, 0.8)),
+    url('/uploads/login_img.jpeg') no-repeat center center / cover;
 
   height: 100vh;
   display: flex;
@@ -37,6 +38,12 @@ body, html {
 }
 
 .form-group {
+  position: relative;
+  margin-bottom: 18px;
+  width:75%;
+}
+
+.form-btn {
   position: relative;
   margin-bottom: 18px;
 }

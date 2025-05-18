@@ -32,10 +32,12 @@ def signup():
     if form.validate_on_submit():
         # Check if user already exists
         existing_user = get_user_by_email(form.email.data)
+        print("")
         if existing_user:
             error = "User already exists with this email"
         else:
             # Attempt to create the user
+            print("yessssssssssssssssssssssssss")
             success = create_user(
                 email=form.email.data,
                 username=form.username.data,
