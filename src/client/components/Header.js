@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from "../uploads/logo.png"; 
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -6,8 +7,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <i className="fas fa-recycle"></i>
-          EcoFinds
+          <img src={Logo} alt="EcoFinds Logo" className="logo-image" />
         </Link>
         <nav>
           <ul className="nav-links">
