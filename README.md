@@ -1,69 +1,83 @@
-# EcoFinds - Sustainable Second-Hand Marketplace
+# EcoFinds - Thrift Shopping Web Application
 
-EcoFinds is a desktop and mobile web application that empowers users to buy and sell second-hand items, promoting sustainable consumption and a circular economy. This platform provides an intuitive and community-driven space for discovering unique pre-owned products and making environmentally conscious choices.
+EcoFinds is a web application for browsing and purchasing second-hand products. The application promotes sustainable shopping by giving pre-loved items a second life.
 
----
-## Demo Video link 
-https://drive.google.com/file/d/13SOJtyCaIlWvUyvKuVxA68vJaudMedPK/view?usp=sharing
+## Features
 
----
+- Browse a catalog of second-hand products
+- Filter products by category, condition, and price range
+- View detailed product information
+- Responsive design for mobile and desktop
+- Contact form for inquiries
 
-## 🌍 Vision
+## Technologies Used
 
-To create a vibrant and trusted platform that revolutionizes the way people engage with second-hand goods—extending product lifecycles, reducing waste, and fostering a community focused on sustainability.
+- **Frontend**: React, React Router, Axios
+- **Backend**: Node.js, Express
+- **Build Tools**: Webpack, Babel
+- **Styling**: CSS
 
-## 🎯 Mission
-
-Build a user-friendly and engaging application that:
-- Makes buying and selling pre-owned goods easy.
-- Encourages conscious consumption.
-- Connects buyers and sellers via a seamless digital marketplace.
-
----
-
-## 🧩 Features
-
-### ✅ Core Functionalities
-- **User Authentication**: Secure sign-up and login (email & password).
-- **Profile Creation**: Set and edit a basic user profile with username.
-- **User Dashboard**: View and edit user profile fields.
-- **Product Listings**:
-  - Add new items with title, description, category, price, and image placeholder.
-  - View, update, and delete listed products (CRUD).
-- **Browse & Search**:
-  - List of all products with basic details.
-  - Filter by predefined categories.
-  - Search by product title.
-- **Product Detail View**: Full product info on a dedicated page.
-- **Cart**: Add items to cart and view them.
-- **Previous Purchases**: Track and display purchased items.
-
----
-
-## 💻 Wireframes & Mockup
-
-- View our wireframes here: [EcoFinds Mockup](https://app.excalidraw.com/l/65VNwvy7c4X/FL5ME7rGhs)
-
-Screens include:
-- Login/Sign-Up
-- Product Feed
-- Add New Product
-- My Listings
-- Product Details
-- User Dashboard
-- Cart
-- Previous Purchases
-
----
-
-
+## Getting Started
 
 ### Prerequisites
 
-- Node.js / Python / 
-- Git
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
 ### Installation
 
-```bash
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Build the client-side application:
+   ```
+   npm run build
+   ```
+4. Start the server:
+   ```
+   npm start
+   ```
+5. The application will be available at http://localhost:12000
 
+### Development
+
+To run the application in development mode with hot reloading:
+
+```
+npm run dev
+```
+link- https://github.com/Yashkatiyar24/thrift-web 
+
+## Project Structure
+
+```
+ecofinds/
+├── dist/                  # Compiled client-side files
+├── src/
+│   ├── client/            # Frontend React application
+│   │   ├── components/    # Reusable UI components
+│   │   ├── pages/         # Page components
+│   │   ├── styles/        # CSS styles
+│   │   ├── App.js         # Main React component
+│   │   └── index.js       # React entry point
+│   └── server/            # Backend Node.js/Express server
+│       ├── models/        # Data models
+│       ├── routes/        # API routes
+│       └── index.js       # Server entry point
+├── package.json           # Project dependencies and scripts
+└── webpack.config.js      # Webpack configuration
+```
+
+## API Endpoints
+
+- `GET /api/products` - Get all products
+- `GET /api/products/:id` - Get a specific product by ID
+- `POST /api/products` - Create a new product
+- `PUT /api/products/:id` - Update a product
+- `DELETE /api/products/:id` - Delete a product
+
+## License
+
+This project is licensed under the ISC License.
