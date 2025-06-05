@@ -10,15 +10,7 @@ const Footer = () => {
           <p>Your destination for sustainable second-hand shopping. Find unique treasures while reducing waste.</p>
         </div>
         
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-          <ul className="footer-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/products">Products</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </div>
+        
         
         <div className="footer-section">
           <h3>Connect With Us</h3>
