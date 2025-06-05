@@ -37,7 +37,7 @@ const sampleProducts = [
   {
     id: 1,
     name: 'Vintage Denim Jacket',
-    price: 45.99,
+    price: 700,
     description: 'Classic vintage denim jacket in excellent condition',
     category: 'Clothing',
     condition: 'Good',
@@ -46,7 +46,7 @@ const sampleProducts = [
   {
     id: 2,
     name: 'Retro Record Player',
-    price: 89.99,
+    price: 6000,
     description: 'Fully functional vintage record player from the 70s',
     category: 'Electronics',
     condition: 'Fair',
@@ -55,7 +55,7 @@ const sampleProducts = [
   {
     id: 3,
     name: 'Antique Wooden Chair',
-    price: 65.00,
+    price: 1650,
     description: 'Beautiful handcrafted wooden chair with intricate details',
     category: 'Furniture',
     condition: 'Excellent',
@@ -64,7 +64,7 @@ const sampleProducts = [
   {
     id: 4,
     name: 'Vintage Leather Bag',
-    price: 35.50,
+    price: 1500,
     description: 'Genuine leather messenger bag with minimal wear',
     category: 'Accessories',
     condition: 'Good',

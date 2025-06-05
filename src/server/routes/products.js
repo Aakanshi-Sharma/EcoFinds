@@ -6,7 +6,7 @@ let products = [
   {
     id: 1,
     name: 'Vintage Denim Jacket',
-    price: 45.99,
+    price: 700,
     description: 'Classic vintage denim jacket in excellent condition',
     category: 'Clothing',
     condition: 'Good',
@@ -15,7 +15,7 @@ let products = [
   {
     id: 2,
     name: 'Retro Record Player',
-    price: 89.99,
+    price: 6000,
     description: 'Fully functional vintage record player from the 70s',
     category: 'Electronics',
     condition: 'Fair',
@@ -24,7 +24,7 @@ let products = [
   {
     id: 3,
     name: 'Antique Wooden Chair',
-    price: 65.00,
+    price: 1650,
     description: 'Beautiful handcrafted wooden chair with intricate details',
     category: 'Furniture',
     condition: 'Excellent',
@@ -33,7 +33,7 @@ let products = [
   {
     id: 4,
     name: 'Vintage Leather Bag',
-    price: 35.50,
+    price: 1500,
     description: 'Genuine leather messenger bag with minimal wear',
     category: 'Accessories',
     condition: 'Good',
@@ -42,7 +42,7 @@ let products = [
   {
     id: 5,
     name: 'Retro Polaroid Camera',
-    price: 75.00,
+    price: 2000,
     description: 'Vintage Polaroid camera in working condition',
     category: 'Electronics',
     condition: 'Good',
@@ -51,11 +51,11 @@ let products = [
   {
     id: 6,
     name: 'Mid-Century Coffee Table',
-    price: 120.00,
+    price: 3200,
     description: 'Authentic mid-century modern coffee table with minimal wear',
     category: 'Furniture',
     condition: 'Excellent',
-    imageUrl: 'https://images.unsplash.com/photo-1532372320572-cda25653a694?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+    imageUrl: 'https://assets.wfcdn.com/im/85238002/resize-h1200-w1200%5Ecompr-r85/2922/292290580/George+Oliver+Klever+Mid+Century+Modern+Coffee+Table+%7C+Round+Wooden+Center+Table+with+Storage.jpg'
   }
 ];
 

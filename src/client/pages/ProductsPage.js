@@ -109,10 +109,12 @@ const ProductsPage = () => {
               style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
             >
               <option value="">All Prices</option>
-              <option value="0-25">Under $25</option>
-              <option value="25-50">$25 - $50</option>
-              <option value="50-100">$50 - $100</option>
-              <option value="100-">Over $100</option>
+              <option value="0-500">Under ₹500</option>
+              <option value="500-1000">₹500 - ₹1000</option>
+              <option value="1000-2000">₹1000 - ₹2000</option>
+              <option value="2000-3000">₹2000 - ₹3000</option>
+              <option value="3000-5000">₹3000 - ₹5000</option>
+              <option value="5000-">Over ₹5000</option>
             </select>
           </div>
         </div>
