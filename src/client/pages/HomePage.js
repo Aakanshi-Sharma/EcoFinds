@@ -12,9 +12,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
-        const response = await axios.get('/api/products');
-        // Get only the first 4 products for featured section
-        setFeaturedProducts(response.data.slice(0, 4));
+        const response = await axios.get('/api/products/featured?limit=6');
+        setFeaturedProducts(response.data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch featured products');

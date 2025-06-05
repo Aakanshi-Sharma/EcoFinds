@@ -1,0 +1,12 @@
+
+> ecofinds@1.0.0 start
+> node src/server/index.js
+
+Server running on port 12000
+Connected to PostgreSQL database
+Database initialized successfully
+Connected to PostgreSQL database
+Connected to PostgreSQL database
+Connected to PostgreSQL database
+Connected to PostgreSQL database
+Connected to PostgreSQL database

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,6 +24,36 @@ const ProductDetailPage = () => {
 
     fetchProduct();
   }, [id]);
+
+  const handleBuyNow = async () => {
+    if (!user) {
+      alert('Please log in to purchase items');
+      return;
+    }
+
+    const confirmed = window.confirm(`Are you sure you want to buy "${product.name}" for $${product.price.toFixed(2)}?`);
+    
+    if (!confirmed) return;
+
+    try {
+      const response = await axios.post('/api/orders/place-direct', 
+        { 
+          productId: product.id, 
+          quantity: 1,
+          totalAmount: product.price
+        },
+        { headers: { Authorization: `Bearer ${user.token}` } }
+      );
+      
+      alert(`Order placed successfully! Order ID: ${response.data.orderId}`);
+      
+      // Redirect to orders page
+      window.location.href = '/orders';
+    } catch (error) {
+      console.error('Error placing order:', error);
+      alert('Error placing order. Please try again.');
+    }
+  };
 
   if (loading) {
     return <div>Loading product details...</div>;
@@ -69,15 +101,27 @@ const ProductDetailPage = () => {
           
           <p className="product-detail-description">{product.description}</p>
           
-          <button className="btn" style={{ marginRight: '1rem' }}>
-            <i className="fas fa-shopping-cart" style={{ marginRight: '0.5rem' }}></i>
-            Add to Cart
-          </button>
-          
-          <button className="btn" style={{ backgroundColor: '#f44336' }}>
-            <i className="fas fa-heart" style={{ marginRight: '0.5rem' }}></i>
-            Save
-          </button>
+          <div style={{ marginTop: '2rem' }}>
+            <button 
+              onClick={handleBuyNow}
+              className="btn" 
+              style={{ 
+                backgroundColor: '#4CAF50', 
+                color: 'white', 
+                padding: '1rem 3rem',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                width: '100%',
+                maxWidth: '300px'
+              }}
+            >
+              <i className="fas fa-shopping-bag" style={{ marginRight: '0.5rem' }}></i>
+              Buy Now - ${product.price.toFixed(2)}
+            </button>
+          </div>
         </div>
       </div>
     </div>
