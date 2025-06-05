@@ -86,7 +86,7 @@ const ProductDetailPage = () => {
         
         <div className="product-detail-info">
           <h1>{product.name}</h1>
-          <p className="product-detail-price">${product.price.toFixed(2)}</p>
+          <p className="product-detail-price">₹{product.price.toFixed(2)}</p>
           
           <div className="product-meta">
             <span className="product-meta-item">

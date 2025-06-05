@@ -4,6 +4,7 @@ const { authenticateToken, optionalAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
+<<<<<<< HEAD
 // Get featured products (most clicked)
 router.get('/featured', async (req, res) => {
   try {
@@ -52,6 +53,63 @@ router.get('/featured', async (req, res) => {
   } catch (error) {
     console.error('Error fetching featured products:', error);
     res.status(500).json({ message: 'Internal server error' });
+=======
+// Mock database for products
+let products = [
+  {
+    id: 1,
+    name: 'Vintage Denim Jacket',
+    price: 700,
+    description: 'Classic vintage denim jacket in excellent condition',
+    category: 'Clothing',
+    condition: 'Good',
+    imageUrl: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+  },
+  {
+    id: 2,
+    name: 'Retro Record Player',
+    price: 6000,
+    description: 'Fully functional vintage record player from the 70s',
+    category: 'Electronics',
+    condition: 'Fair',
+    imageUrl: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+  },
+  {
+    id: 3,
+    name: 'Antique Wooden Chair',
+    price: 1650,
+    description: 'Beautiful handcrafted wooden chair with intricate details',
+    category: 'Furniture',
+    condition: 'Excellent',
+    imageUrl: 'https://images.unsplash.com/photo-1549497538-303791108f95?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+  },
+  {
+    id: 4,
+    name: 'Vintage Leather Bag',
+    price: 1500,
+    description: 'Genuine leather messenger bag with minimal wear',
+    category: 'Accessories',
+    condition: 'Good',
+    imageUrl: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+  },
+  {
+    id: 5,
+    name: 'Retro Polaroid Camera',
+    price: 2000,
+    description: 'Vintage Polaroid camera in working condition',
+    category: 'Electronics',
+    condition: 'Good',
+    imageUrl: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+  },
+  {
+    id: 6,
+    name: 'Mid-Century Coffee Table',
+    price: 3200,
+    description: 'Authentic mid-century modern coffee table with minimal wear',
+    category: 'Furniture',
+    condition: 'Excellent',
+    imageUrl: 'https://assets.wfcdn.com/im/85238002/resize-h1200-w1200%5Ecompr-r85/2922/292290580/George+Oliver+Klever+Mid+Century+Modern+Coffee+Table+%7C+Round+Wooden+Center+Table+with+Storage.jpg'
+>>>>>>> a20ecd2d15e6007f8eec4e4d998e263ad7346579
   }
 });
 
