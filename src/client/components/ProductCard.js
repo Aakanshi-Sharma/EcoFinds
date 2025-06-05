@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
         />
         <div className="product-info">
           <h3 className="product-name">{product.name}</h3>
-          <p className="product-price">₹{product.price.toFixed(2)}</p>
+          <p className="product-price">₹{product.price.toFixed(0)}</p>
           <p className="product-category">{product.category}</p>
           <span className="product-condition">{product.condition}</span>
         </div>
