@@ -3,11 +3,16 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-// Import routes
+// Import database and routes
+const { initializeDatabase } = require('./config/database');
 const productRoutes = require('./routes/products');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 12000;
+
+// Initialize database
+initializeDatabase();
 
 // Middleware
 app.use(cors({
@@ -19,13 +24,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // API Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', require('./routes/cart'));
+app.use('/api/wishlist', require('./routes/wishlist'));
+app.use('/api/orders', require('./routes/orders'));
+app.use('/api/auctions', require('./routes/auctions'));
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '../../dist')));
 
 // Serve index.html for client-side routing
-const clientRoutes = ['/', '/products', '/products/:id', '/about', '/contact'];
+const clientRoutes = ['/', '/products', '/products/:id', '/about', '/contact', '/login', '/register', '/dashboard', '/cart', '/wishlist', '/orders', '/add-product', '/auctions', '/auctions/:id', '/my-bids'];
 clientRoutes.forEach(route => {
   app.get(route, (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
